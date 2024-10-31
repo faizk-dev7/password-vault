@@ -6,7 +6,7 @@ import bodyParser from "body-parser";
 import { connectDB } from "./config/dbCon.js";
 import { corsOptions } from "./config/corsOptions.js";
 import { credentials } from "./middleware/credentials.js";
-import allowCors from "./utils/allowCors.js";
+
 const PORT = 5555;
 
 // import routes
@@ -18,7 +18,6 @@ import userRoute from "./routes/userRoute.js";
 import divisionRoute from "./routes/divisionRoute.js";
 import loginRoute from "./routes/loginRoute.js";
 
-allowCors();
 const app = express();
 connectDB();
 
@@ -28,6 +27,7 @@ app.use(credentials);
 
 // Cross Origin Resource Sharing
 // app.use(cors(corsOptions));
+
 app.use(cors());
 
 app.use(bodyParser.json());
